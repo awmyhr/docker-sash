@@ -1,5 +1,4 @@
 #!/bin/sh
-#-- NOTE: Default to POSIX shell/mode. If more is needed check shell-script...
 #==============================================================================
 #:"""
 #: .. program:: usr-local-bin-login.sh
@@ -10,7 +9,9 @@
 #:
 #: .. codeauthor:: awmyhr <awmyhr@gmail.com>
 #:
-#: TODO: CHANGEME
+#: Intended as an entrypoint to interactive, CLI-based Docker containers,
+#: this script will create a user, grant the user sudo access, then su to
+#: that user.
 #:"""
 #==============================================================================
 #-- Variables which are meta for the script should be dunders (__varname__)
@@ -43,11 +44,11 @@ if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
     printf '(%s)\n' "${__basename__}"
     printf '%s\n' "${__synopsis__}"
     printf '%s\n' "${__description__}"
-    printf 'The following environment varialbes are used:\n'
+    printf 'The following environment variables are used:\n'
     printf 'ADD_UNAME - user name to create (default)\n'
     printf 'ADD_UID   - UID to assign (1000)\n'
-    printf 'ADD_GNAME - group name to create (default)\n'
-    printf 'ADD_GID   - GID to assing (1000)\n'
+    printf 'ADD_GNAME - group name to create (ADD_UNAME)\n'
+    printf 'ADD_GID   - GID to assing (ADD_UID)\n'
     printf 'ADD_HOME  - home directory path (/home/default) \n\n'
     printf 'Created: %s  Contact: %s\n' "${__created__}" "${__contact__}"
     printf 'Revised: %s  Version: %s\n' "${__revised__}" "${__version__}"
@@ -61,7 +62,7 @@ fi
 #-- Check/set paramaters.
 
 if [ "z${ADD_UNAME}" = 'z' ] ; then
-    printf 'ADD_UNAME missing, defaulting to: default \n'
+    printf 'ADD_UNAME missing, defaulting to: default\n'
     ADD_UNAME='default'
 fi
 if [ "z${ADD_UID}" = 'z' ] ; then
@@ -69,12 +70,12 @@ if [ "z${ADD_UID}" = 'z' ] ; then
     ADD_UID='1000'
 fi
 if [ "z${ADD_GNAME}" = 'z' ] ; then
-    printf 'ADD_GNAME missing, defaulting to: default\n'
-    ADD_GNAME='default'
+    printf 'ADD_GNAME missing, defaulting to: %s\n' "${ADD_UNAME}"
+    ADD_GNAME="${ADD_UNAME}"
 fi
 if [ "z${ADD_GID}" = 'z' ] ; then
-    printf 'ADD_GID missing, defaulting to: 1000\n'
-    ADD_GID='1000'
+    printf 'ADD_GID missing, defaulting to: %s\n' "${ADD_UID}"
+    ADD_GID="${ADD_UID}"
 fi
 if [ "z${ADD_HOME}" = 'z' ] ; then
     printf 'ADD_HOME missing, defaulting to: /home/default\n'
