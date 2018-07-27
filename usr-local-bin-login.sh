@@ -15,7 +15,7 @@
 #:"""
 #==============================================================================
 #-- Variables which are meta for the script should be dunders (__varname__)
-__version__='0.1.0-alpha' #: current version
+__version__='1.0.0-beta4' #: current version
 __revised__='20180727-105116' #: date of most recent revision
 __contact__='awmyhr <awmyhr@gmail.com>' #: primary contact for support/?'s
 __synopsis__='Create a new user and login as that user.'
@@ -45,11 +45,14 @@ if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
     printf '%s\n' "${__synopsis__}"
     printf '%s\n' "${__description__}"
     printf 'The following environment variables are used:\n'
-    printf 'ADD_UNAME - user name to create (default)\n'
-    printf 'ADD_UID   - UID to assign (1000)\n'
-    printf 'ADD_GNAME - group name to create (ADD_UNAME)\n'
-    printf 'ADD_GID   - GID to assing (ADD_UID)\n'
-    printf 'ADD_HOME  - home directory path (/home/default) \n\n'
+    printf 'ADD_UNAME - user name to create (defaults to default)\n'
+    printf 'ADD_GNAME - group name to create (defaults to ADD_UNAME)\n'
+    printf 'ADD_UID   - UID to assign\n'
+    printf 'ADD_GID   - GID to assing\n'
+    printf 'ADD_HOME  - home directory path\n'
+    printf 'ADD_SHELL - login shell for user\n'
+    printf 'Unless otherwise specified, unset values will drop to sytem defaults.\n'
+    printf '\n'
     printf 'Created: %s  Contact: %s\n' "${__created__}" "${__contact__}"
     printf 'Revised: %s  Version: %s\n' "${__revised__}" "${__version__}"
     printf '%s, part of %s.\n' "${__cononical_name__}" "${__project_name__}"
@@ -60,25 +63,27 @@ if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
 fi
 #==============================================================================
 #-- Check/set paramaters.
-
-if [ "z${ADD_UNAME}" = 'z' ] ; then
-    printf 'ADD_UNAME missing, defaulting to: default\n'
-    ADD_UNAME='default'
+if [ "z${ADD_UNAME}" = 'z' ] ; then ADD_UNAME='default'           ; fi
+if [ "z${ADD_GNAME}" = 'z' ] ; then ADD_GNAME="${ADD_UNAME}"      ; fi
+if [ "z${ADD_UID}" = 'z' ]   ; then ADD_UID=''; else ADD_UID="-u ${ADD_UID}"; fi
+if [ "z${ADD_GID}" = 'z' ]   ; then ADD_GID=''; else ADD_GID="-g ${ADD_GID}"; fi
+if [ "z${ADD_SHELL}" = 'z' ] ; then ADD_SHELL=''
+elif [ ! -x "${ADD_SHELL}" ] ; then ADD_SHELL=''
+else ADD_SHELL="--shell ${ADD_SHELL}"
 fi
-if [ "z${ADD_UID}" = 'z' ] ; then
-    printf 'ADD_UID missing, defaulting to: 1000\n'
-    ADD_UID='1000'
-fi
-if [ "z${ADD_GNAME}" = 'z' ] ; then
-    printf 'ADD_GNAME missing, defaulting to: %s\n' "${ADD_UNAME}"
-    ADD_GNAME="${ADD_UNAME}"
-fi
-if [ "z${ADD_GID}" = 'z' ] ; then
-    printf 'ADD_GID missing, defaulting to: %s\n' "${ADD_UID}"
-    ADD_GID="${ADD_UID}"
-fi
-if [ "z${ADD_HOME}" = 'z' ] ; then
-    printf 'ADD_HOME missing, defaulting to: /home/default\n'
-    ADD_HOME='/home/default'
+if [ "z${ADD_HOME}" = 'z' ]  ; then ADD_HOME='-m'
+elif [ ! -d "${ADD_HOME}" ]  ; then
+    mkdir -p "$(dirname ${ADD_HOME})"
+    ADD_HOME="-m -d ${ADD_HOME}"
+else ADD_HOME="-M -d ${ADD_HOME}"
 fi
 
+#==============================================================================
+#-- Create objects and change user.
+#   NOTE: Do *not* quote any vars aside from ADD_UNAME and ADD_GNAME
+groupadd ${ADD_GID} "${ADD_GNAME}"
+if [ "z${ADD_GID}" = 'z' ]   ; then ADD_GID="-g ${ADD_GNAME}"; fi
+useradd  ${ADD_UID} ${ADD_GID} ${ADD_HOME} ${ADD_SHELL} "${ADD_UNAME}"
+echo "${ADD_UNAME}  ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+
+exec su --login "${ADD_UNAME}"
