@@ -33,16 +33,20 @@ RUN sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
     && yum-config-manager -q --enable *epel* >/dev/null \
     && yum install -y -t ansible-lint ansible-inventory-grapher ansible-review \
             ack bash-completion-extras fish autojump-fish autojump-zsh \
-            python-pyvmomi \
+            python-pyvmomi python-pip \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && pip install pysphere Jinja2 --upgrade
 
-CMD ["/bin/bash"]
+CMD  ["/bin/bash"]
+
+COPY usr-local-bin-login.sh /usr/local/bin/login.sh
+RUN  chmod 0755 /usr/local/bin/login.sh
+ENTRYPOINT ["/usr/local/bin/login.sh"]
 
 LABEL org.label-schema.name="SysAdmin Shell (RHEL)" \
       org.label-schema.vendor="awmyhr <awmyhr@gmail.com" \
-      org.label-schema.version="0.2.0-alpha" \
+      org.label-schema.version="0.3.0-alpha" \
       org.label-schema.release="2018-07-27" \
       org.label-schema.url="https://github.com/awmyhr/docker-sash" \
       org.label-schema.vcs-type="git" \
