@@ -26,7 +26,7 @@ Inspiration taken in part from:
 
 ## Maintaniers
 
-- MyHR, Andy <andy.myhr@metlife.com>
+- awmyhr <awmyhr@gmail.com>
 
 ## Contribute
 

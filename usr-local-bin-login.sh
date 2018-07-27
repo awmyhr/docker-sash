@@ -8,7 +8,7 @@
 #:    :copyright: 2018 awmyhr
 #:    :license: Apache-2.0
 #:
-#: .. codeauthor:: MyHR, Andy <andy.myhr@metlife.com>
+#: .. codeauthor:: awmyhr <awmyhr@gmail.com>
 #:
 #: TODO: CHANGEME
 #:"""
@@ -16,7 +16,7 @@
 #-- Variables which are meta for the script should be dunders (__varname__)
 __version__='0.1.0-alpha' #: current version
 __revised__='20180727-105116' #: date of most recent revision
-__contact__='MyHR, Andy <andy.myhr@metlife.com>' #: primary contact for support/?'s
+__contact__='awmyhr <awmyhr@gmail.com>' #: primary contact for support/?'s
 __synopsis__='Create a new user and login as that user.'
 __description__="
 Intended as an entrypoint to interactive, CLI-based Docker containers,
@@ -25,7 +25,7 @@ that user.
 "
 #------------------------------------------------------------------------------
 #-- The following few variables should be relatively static over life of script
-__author__='MyHR, Andy <andy.myhr@metlife.com>' #: coder(s) of script
+__author__='awmyhr <awmyhr@gmail.com>' #: coder(s) of script
 __created__='2018-07-27'               #: date script originlly created
 __copyright__='2018 awmyhr' #: Copyright short name
 __license__='Apache-2.0'
