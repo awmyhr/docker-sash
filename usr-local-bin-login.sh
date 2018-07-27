@@ -42,7 +42,13 @@ __basename__="${0}" #: name script run as
 if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
     printf '(%s)\n' "${__basename__}"
     printf '%s\n' "${__synopsis__}"
-    printf '%s\n\n' "${__description__}"
+    printf '%s\n' "${__description__}"
+    printf 'The following environment varialbes are used:\n'
+    printf 'ADD_UNAME - user name to create (default)\n'
+    printf 'ADD_UID   - UID to assign (1000)\n'
+    printf 'ADD_GNAME - group name to create (default)\n'
+    printf 'ADD_GID   - GID to assing (1000)\n'
+    printf 'ADD_HOME  - home directory path (/home/default) \n\n'
     printf 'Created: %s  Contact: %s\n' "${__created__}" "${__contact__}"
     printf 'Revised: %s  Version: %s\n' "${__revised__}" "${__version__}"
     printf '%s, part of %s.\n' "${__cononical_name__}" "${__project_name__}"
@@ -52,6 +58,26 @@ if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
     exit 0
 fi
 #==============================================================================
-#-- TODO: Do something more interesting here...
-#-- Remember, this is for very simple scripts. Anything more complicated then
-#   a dozen or so lines should probably use the shell-script template...
+#-- Check/set paramaters.
+
+if [ "z${ADD_UNAME}" = 'z' ] ; then
+    printf 'ADD_UNAME missing, defaulting to: default \n'
+    ADD_UNAME='default'
+fi
+if [ "z${ADD_UID}" = 'z' ] ; then
+    printf 'ADD_UID missing, defaulting to: 1000\n'
+    ADD_UID='1000'
+fi
+if [ "z${ADD_GNAME}" = 'z' ] ; then
+    printf 'ADD_GNAME missing, defaulting to: default\n'
+    ADD_GNAME='default'
+fi
+if [ "z${ADD_GID}" = 'z' ] ; then
+    printf 'ADD_GID missing, defaulting to: 1000\n'
+    ADD_GID='1000'
+fi
+if [ "z${ADD_HOME}" = 'z' ] ; then
+    printf 'ADD_HOME missing, defaulting to: /home/default\n'
+    ADD_HOME='/home/default'
+fi
+
