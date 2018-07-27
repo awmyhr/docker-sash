@@ -10,6 +10,10 @@
 - [Contribute](#contribute)
 - [License](#license)
 
+Inspiration taken in part from:
+
+- [dockersh](https://github.com/sleeepyjack/dockersh)
+
 ## Install
 
 ```

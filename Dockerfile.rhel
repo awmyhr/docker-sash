@@ -1,0 +1,52 @@
+# From template version: 1.3.0 (2017-03-03)
+# Author:    MyHR, Andy
+# Created:   2018-07-24
+# Project:   SysAdmin Shell
+# Copyright: 2018 awmyhr
+# License:   Apache-2.0
+FROM rhel:7.4
+
+ENV container=docker \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+#-- The base image does not have any man pages & we don't want to simply reinstall
+#   150+ packages just to get them. This should cover most of the needed ones...
+# COPY /usr/share/man /usr/share/man
+#   ... we could avoid this by starting with an older base image then running a
+#   yum update, which should install many (but not all) of the man pages we want.
+
+RUN sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
+    && yum-config-manager -q --disable \* >/dev/null \
+    && yum-config-manager -q --enable rhel-7-server-rpms >/dev/null \
+    && yum update -y \
+    && yum install -y -t bash bash-completion bc bind-utils bzip2 cpuid \
+            dialog diffstat dstat ed git graphviz gzip hostname iperf3 \
+            ksh lua lz4 lzo lzop m4 make man man-pages man-pages-overrides \
+            mc mksh mlocate mtr ncompress patch perl perl-JSON perl-YAML \
+            procps-ng ps_mem psmisc python python-docutils python-IPy \
+            python-jinja2 python-netaddr python-requests python-setuptools \
+            python-urllib3 python-virtualenv PyYAML qperf rsync ruby screen \
+            snappy strace sudo sysfsutils sysstat tcsh time tmux traceroute \
+            tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
+    && yum-config-manager -q --enable rhel-7-server-ansible-2-rpms >/dev/null \
+    && yum install -y -t ansible ansible-doc \
+    && yum-config-manager -q --enable *epel* >/dev/null \
+    && yum install -y -t ansible-lint ansible-inventory-grapher ansible-review \
+            ack bash-completion-extras fish autojump-fish autojump-zsh \
+            python-pyvmomi \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
+    && pip install pysphere Jinja2 --upgrade
+
+CMD ["/bin/bash"]
+
+LABEL org.label-schema.name="SysAdmin Shell (RHEL)" \
+      org.label-schema.vendor="MyHR, Andy <andy.myhr@metlife.com" \
+      org.label-schema.version="0.2.0-alpha" \
+      org.label-schema.release="2018-07-27" \
+      org.label-schema.url="https://github.com/awmyhr/docker-sash" \
+      org.label-schema.vcs-type="git" \
+      org.label-schema.vcs-url="https://github.com/awmyhr/docker-sash" \
+      org.label-schema.summary="Toolbox for SysAdmins built on RHEL" \
+      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.schema-version='1.0.0-rc.1'
