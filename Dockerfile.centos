@@ -1,0 +1,52 @@
+# From template version: 1.0.0 (2017-07-30)
+# Author:    awmyhr
+# Created:   2018-07-30
+# Project:   SysAdmin Shell
+# Copyright: 2018 awmyhr
+# License:   Apache-2.0
+FROM centos:latest
+
+ENV container=docker \
+    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+RUN sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
+    && yum-config-manager -q --disable \* >/dev/null \
+    && yum-config-manager -q --enable base >/dev/null \
+    && yum-config-manager -q --enable updates >/dev/null \
+    && yum update -y \
+    && yum install -y -t bash bash-completion bc bind-utils bzip2 cpuid \
+            dialog diffstat dstat ed git graphviz gzip hostname iperf3 \
+            ksh lua lz4 lzo lzop m4 make man man-pages man-pages-overrides \
+            mc mksh mlocate mtr ncompress patch perl perl-JSON perl-YAML \
+            procps-ng ps_mem psmisc python python-docutils python-IPy \
+            python-jinja2 python-netaddr python-requests python-setuptools \
+            python-urllib3 python-virtualenv PyYAML qperf rsync ruby screen \
+            snappy strace sudo sysfsutils sysstat tcsh time tmux traceroute \
+            tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
+    && yum-config-manager -q --enable extras >/dev/null \
+    && yum install -y epel-release \
+    && yum install -y -t ansible ansible-doc ansible-lint python-pyvmomi \
+            ansible-inventory-grapher ansible-review python-pip \
+            ack bash-completion-extras fish autojump-fish autojump-zsh \
+    && yum clean all \
+    && rm -rf /var/cache/yum \
+    && pip install pysphere Jinja2 --upgrade \
+    && mandb -qsp \
+    && updatedb
+
+CMD ["/bin/bash"]
+
+COPY usr-local-bin-login.sh /usr/local/bin/login.sh
+RUN  chmod 0755 /usr/local/bin/login.sh
+ENTRYPOINT ["/usr/local/bin/login.sh"]
+
+LABEL org.label-schema.name="SysAdmin Shell" \
+      org.label-schema.vendor="awmyhr <awmyhr@gmail.com" \
+      org.label-schema.version="0.1.0-alpha" \
+      org.label-schema.release="2018-07-30" \
+      org.label-schema.url="https://github.com/awmyhr/docker-sash" \
+      org.label-schema.vcs-type="git" \
+      org.label-schema.vcs-url="https://github.com/awmyhr/docker-sash" \
+      org.label-schema.summary="TODO: CHANGEME <100 char" \
+      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.schema-version='1.0.0-rc.1'
