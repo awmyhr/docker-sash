@@ -15,7 +15,7 @@
 #:"""
 #==============================================================================
 #-- Variables which are meta for the script should be dunders (__varname__)
-__version__='1.0.0-beta4' #: current version
+__version__='1.0.0-beta5' #: current version
 __revised__='20180727-105116' #: date of most recent revision
 __contact__='awmyhr <awmyhr@gmail.com>' #: primary contact for support/?'s
 __synopsis__='Create a new user and login as that user.'
@@ -83,7 +83,7 @@ fi
 #   NOTE: Do *not* quote any vars aside from ADD_UNAME and ADD_GNAME
 groupadd ${ADD_GID} "${ADD_GNAME}"
 if [ "z${ADD_GID}" = 'z' ]   ; then ADD_GID="-g ${ADD_GNAME}"; fi
-useradd  ${ADD_UID} ${ADD_GID} ${ADD_HOME} ${ADD_SHELL} "${ADD_UNAME}"
+useradd -l ${ADD_UID} ${ADD_GID} ${ADD_HOME} ${ADD_SHELL} "${ADD_UNAME}"
 echo "${ADD_UNAME}  ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
 
 exec su --login "${ADD_UNAME}"
