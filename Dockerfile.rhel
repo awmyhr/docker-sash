@@ -5,7 +5,7 @@ FROM rhel:7.4
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (RHEL)' \
     AUTHOR='awmyhr' \
-    VERSION='0.6.0-alpha' \
+    VERSION='0.3.0-alpha' \
     REVISED='2018-08-02' \
     CREATED='2018-07-24' \
     COPYRIGHT='2018 awmyhr' \
@@ -37,8 +37,8 @@ RUN chmod 0755 /usr/local/bin/login.sh \
             python-pyvmomi python-pip \
     && yum clean all \
     && rm -rf /var/cache/yum \
-    && pip install pysphere Jinja2 --upgrade \
-    && pip install ansible[azure] \
+    && pip install Jinja2 --upgrade \
+    && pip install ansible[azure] pysphere \
     && mandb -qsp \
     && updatedb
 CMD  ["/bin/bash"]
