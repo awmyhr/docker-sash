@@ -5,7 +5,7 @@ FROM rhel:7.4
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (RHEL)' \
     AUTHOR='awmyhr' \
-    VERSION='0.3.0-alpha' \
+    VERSION='0.7.0-alpha' \
     REVISED='2018-08-02' \
     CREATED='2018-07-24' \
     COPYRIGHT='2018 awmyhr' \
