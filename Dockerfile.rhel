@@ -1,21 +1,22 @@
-# From template version: 1.3.0 (2017-03-03)
-# Author:    awmyhr
-# Created:   2018-07-24
-# Project:   SysAdmin Shell
-# Copyright: 2018 awmyhr
-# License:   Apache-2.0
+#==============================================================================
+#-- From template version: 1.3.0 (2017-03-03)
+#==============================================================================
 FROM rhel:7.4
-
-ENV container=docker \
+#------------------------------------------------------------------------------
+ENV PROJECT='SysAdmin Shell (RHEL)' \
+    AUTHOR='awmyhr' \
+    VERSION='0.6.0-alpha' \
+    REVISED='2018-08-02' \
+    CREATED='2018-07-24' \
+    COPYRIGHT='2018 awmyhr' \
+    LICENSE='Apache-2.0' \
+    container=docker \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-
-#-- The base image does not have any man pages & we don't want to simply reinstall
-#   150+ packages just to get them. This should cover most of the needed ones...
-# COPY /usr/share/man /usr/share/man
-#   ... we could avoid this by starting with an older base image then running a
-#   yum update, which should install many (but not all) of the man pages we want.
-
-RUN sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
+#------------------------------------------------------------------------------
+#--
+COPY usr-local-bin-login.sh /usr/local/bin/login.sh
+RUN chmod 0755 /usr/local/bin/login.sh \
+    && sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
     && yum-config-manager -q --disable \* >/dev/null \
     && yum-config-manager -q --enable rhel-7-server-rpms >/dev/null \
     && yum update -y \
@@ -37,22 +38,20 @@ RUN sed -i -e '/tsflags=nodocs/d' /etc/yum.conf \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && pip install pysphere Jinja2 --upgrade \
+    && pip install ansible[azure] \
     && mandb -qsp \
     && updatedb
-
 CMD  ["/bin/bash"]
-
-COPY usr-local-bin-login.sh /usr/local/bin/login.sh
-RUN  chmod 0755 /usr/local/bin/login.sh
 ENTRYPOINT ["/usr/local/bin/login.sh"]
-
-LABEL org.label-schema.name="SysAdmin Shell (RHEL)" \
-      org.label-schema.vendor="awmyhr <awmyhr@gmail.com" \
-      org.label-schema.version="0.5.0-alpha" \
-      org.label-schema.release="2018-07-30" \
+#------------------------------------------------------------------------------
+LABEL org.label-schema.name="${PROJECT}" \
+      org.label-schema.vendor="awmyhr <awmyhr@gmail.com>" \
+      org.label-schema.version="${VERSION}" \
+      org.label-schema.release="${REVISED}" \
       org.label-schema.url="https://github.com/awmyhr/docker-sash" \
       org.label-schema.vcs-type="git" \
       org.label-schema.vcs-url="https://github.com/awmyhr/docker-sash" \
       org.label-schema.summary="Toolbox for SysAdmins built on RHEL" \
       org.label-schema.description="TODO: CHANGEME <300 char" \
       org.label-schema.schema-version='1.0.0-rc.1'
+#------------------------------------------------------------------------------
