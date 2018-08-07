@@ -1,0 +1,14 @@
+{
+  projectrc_version: '1.0.0',
+  contact_email: 'awmyhr@gmail.com',
+  contact_name: 'awmyhr',
+  email: 'awmyhr@gmail.com',
+  full_name: 'awmyhr',
+  project_home: 'https://github.com/awmyhr/docker-sash',
+  project_name: 'SysAdmin Shell',
+  project_slug: 'docker-sash',
+  project_abbr: 'sash',
+  project_version: '1.0.0',
+  software_copyright: '2018 awmyhr',
+  software_license: 'Apache-2.0'
+}
