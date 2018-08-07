@@ -21,6 +21,7 @@ however individual files generally use date versioning.
 
 ## [Unreleased]
 ### Added
+- dockerignore file
 
 ### Changed
 
