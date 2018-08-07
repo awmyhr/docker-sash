@@ -21,10 +21,6 @@ however individual files generally use date versioning.
 
 ## [Unreleased]
 ### Added
-- basic project files
-- initial image flavors (CentOS and RHEL)
-- container login script
-- example scriptlets for building and running
 
 ### Changed
 
@@ -35,5 +31,14 @@ however individual files generally use date versioning.
 ### Fixed
 
 ### Security
+
+---
+
+## [1.0.0] - 2018-08-07 (awmyhr)
+### Added
+- basic project files
+- initial image flavors (CentOS and RHEL)
+- container login script
+- example scriptlets for building and running
 
 ---
