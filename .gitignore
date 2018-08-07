@@ -2,7 +2,7 @@
 # gitignore [https://git-scm.com/docs/gitignore]
 #------------------------------------------------------------------------------
 # Author:     awmyhr <awmyhr@gmail.com>
-# Revised:    2018-07-20
+# Revised:    20180807-094545
 # Created:    2016-09-11
 #==============================================================================
 #-- Application/OS-specific files to ignore
@@ -14,6 +14,7 @@
 .kdev4
 .user
 Thumbs.db
+Dockerfile
 **/test*.yml
 **/ansible/inventories/user**
 **/ansible/inventories/group_vars/user**
