@@ -8,7 +8,7 @@
   project_name: 'SysAdmin Shell',
   project_slug: 'docker-sash',
   project_abbr: 'sash',
-  project_version: '0.1.0',
+  project_version: '1.0.0',
   software_copyright: '2018 awmyhr',
   software_license: 'Apache-2.0'
 }
