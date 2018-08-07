@@ -9,7 +9,7 @@ CNAME="${PREFIX}${UNAME}"
 INAME="${PREFIX}${FLAVOR}"
 #--
 if [ "z$(docker images -q "${INAME}" 2>/dev/null)" = 'z' ] ; then
-    printf 'ERROR: %s does not exist, please create it first.\n' "${INAME}"
+    >&2 printf 'ERROR: %s does not exist, please create it first.\n' "${INAME}"
     exit 69
 fi
 #--
