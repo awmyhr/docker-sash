@@ -1,5 +1,5 @@
 #!/bin/sh
-# Revised:    20180807-102442
+# Revised:    20180807-102506
 FLAVOR="${1:-centos}"
 PREFIX="${2:-sash-}"
 if [ "z$(docker images -q "${PREFIX}${FLAVOR}" 2>/dev/null)" = 'z' ] ; then
