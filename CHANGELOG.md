@@ -11,12 +11,20 @@ however individual files generally use date versioning.
 ---
 
 ## TODO
+- wrapper script which provides configurability, does all the building/running,
+  and can be used as a login shell
+- more flavors (Fedora, Ubuntu, etc)
+- installation/updating support
+- improved documentation
 
 ---
 
 ## [Unreleased]
 ### Added
 - basic project files
+- initial image flavors (CentOS and RHEL)
+- container login script
+- example scriptlets for building and running
 
 ### Changed
 
