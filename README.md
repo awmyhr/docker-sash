@@ -27,15 +27,15 @@ at container creation.
 ## Usage
 
 Build the image with 'image-build.sh'. By default, a CentOS based image will be
-created as 'sash-centos'. A different base can be used by passing it as a
-paramater, as in 'image-build.sh rhel'. This is done my changing which file
+created as 'sash-centos'. A different flavor can be used by passing it as a
+paramater, as in 'image-build.sh rhel'. This is done by changing which file
 the 'Dockerfile' symlink points to.
 
 Running a throw-away continer can be done with 'image-run.sh'. This will run
 using the current users UID, GID, shell, and home directory. Examine the
 script to learn how to run with different params.
 
-Executing 'container-build.sh' will make the above container persistent. In
+Executing 'container-build.sh' will run the above container detached. In
 this case it will be siting idle. Running 'container-run.sh' will open a
 session inside the container. Again, examine the scripts for an idea of
 what Docker commands to use for a more customized experience.
@@ -57,11 +57,11 @@ available (though noteably not Emacs, as it is very heavy. However, mg is.)
 
 ### RHEL 7
 
-*NOTE: This container has special, specific requirements!*
+*NOTE: This flavor has special, specific requirements!*
 
-*NOTE: This container is NOT supported or endorsed by Red Hat in any way!*
+*NOTE: This flavor is NOT supported or endorsed by Red Hat in any way!*
 
-A Red Hat Enterprise Linux 7 version of the CentOS 7 container. The image is
+A Red Hat Enterprise Linux 7 version of the CentOS 7 flavor. The image is
 sourced from the official Red Hat registry, and has a very strict set of
 requirements:
 
