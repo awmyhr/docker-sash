@@ -23,15 +23,18 @@ however individual files generally use date versioning.
 ### Added
 - dockerignore file
 - flavor-specific documentation added to README.md
+- Microsoft repo and PowerShell install for centos
 
 ### Changed
 - package updates for centos and rhel
+- container hostname now is prefixed with the host's hostname
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+- spelling and wording tweaks
 
 ### Security
 
