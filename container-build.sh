@@ -23,6 +23,6 @@ docker run --tty --detach \
     --env ADD_GID="$(id -g)" \
     --env ADD_SHELL="${SHELL}" \
     --volume   "${HOME}:/home/${UNAME}:rw" \
-    --hostname "${CNAME}" \
+    --hostname "$(hostname -s)-${CNAME}" \
     --name     "${CNAME}" \
     "${INAME}"
