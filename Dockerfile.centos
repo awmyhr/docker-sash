@@ -5,7 +5,7 @@ FROM centos:latest
 #------------------------------------------------------------------------------
 ENV  PROJECT='SysAdmin Shell (CentOS)' \
     AUTHOR='awmyhr' \
-    VERSION='1.1.1' \
+    VERSION='1.1.2' \
     REVISED='2018-08-08' \
     CREATED='2018-07-30' \
     COPYRIGHT='2018 awmyhr' \
@@ -34,7 +34,7 @@ RUN chmod 0755 /usr/local/bin/login.sh \
     && yum-config-manager -q --enable extras >/dev/null \
     && yum install -y epel-release \
     && yum install -y -t ansible ansible-doc ansible-lint python-pyvmomi \
-            ansible-inventory-grapher ansible-review python-pip \
+            ansible-inventory-grapher ansible-review python-pip rc \
             ack bash-completion-extras fish autojump-fish autojump-zsh \
             ccze multitail lnav vile mg joe tweak \
     && wget https://packages.microsoft.com/config/rhel/7/prod.repo -O /etc/yum.repos.d/microsoft.repo \
