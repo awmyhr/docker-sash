@@ -5,8 +5,8 @@ FROM centos:latest
 #------------------------------------------------------------------------------
 ENV  PROJECT='SysAdmin Shell (CentOS)' \
     AUTHOR='awmyhr' \
-    VERSION='0.3.0-alpha' \
-    REVISED='2018-08-02' \
+    VERSION='1.0.0' \
+    REVISED='2018-08-08' \
     CREATED='2018-07-30' \
     COPYRIGHT='2018 awmyhr' \
     LICENSE='Apache-2.0' \
@@ -30,11 +30,13 @@ RUN chmod 0755 /usr/local/bin/login.sh \
             python-urllib3 python-virtualenv PyYAML qperf rsync ruby screen \
             snappy strace sudo sysfsutils sysstat tcsh time tmux traceroute \
             tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
+            nano hexedit \
     && yum-config-manager -q --enable extras >/dev/null \
     && yum install -y epel-release \
     && yum install -y -t ansible ansible-doc ansible-lint python-pyvmomi \
             ansible-inventory-grapher ansible-review python-pip \
             ack bash-completion-extras fish autojump-fish autojump-zsh \
+            ccze multitail lnav vile mg joe tweak \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && pip install Jinja2 --upgrade \
