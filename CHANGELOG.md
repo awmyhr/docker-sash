@@ -13,7 +13,7 @@ however individual files generally use date versioning.
 ## TODO
 - wrapper script which provides configurability, does all the building/running,
   and can be used as a login shell
-- more flavors (Fedora, Ubuntu, etc)
+- more flavors (Alpine, Ubuntu, etc)
 - installation/updating support
 - improved documentation
 
@@ -24,6 +24,7 @@ however individual files generally use date versioning.
 - dockerignore file
 - flavor-specific documentation added to README.md
 - Microsoft repo and PowerShell install for centos
+- flavor: Fedora
 
 ### Changed
 - package updates for centos and rhel

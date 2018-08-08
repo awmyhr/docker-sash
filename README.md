@@ -19,6 +19,11 @@ Creates a standardized, 'safe' work environment inside a container. User
 details inside the container (such as UID/GID, shell, etc) are configurable
 at container creation.
 
+All flavors have a variety of script languages, shells, utilities, and text
+editors available (though noteably not Emacs, as it is very heavy.
+However, Emacs-like mg is). I do actively try to maintain feature parity
+between the flavors.
+
 ## Install
 
 ```
@@ -52,8 +57,12 @@ Other sources (i.e., Python pip install, other 3rd party repos) are used
 very judiciously, and only when the utility outweighs the desire to keep
 the system 'pure.'
 
-A variety of script languages, shells, utilities, and text editors are
-available (though noteably not Emacs, as it is very heavy. However, mg is.)
+### Fedora
+
+This is intended as a current version container. The image is sourced from the
+official image on Docker Hub. Packages are sourced first from the official
+Fedora repositories (base and updates), then from 3rd party repos,
+falling back to other package managers (such as pip) when needed.
 
 ### RHEL 7
 
