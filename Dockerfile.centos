@@ -5,7 +5,7 @@ FROM centos:latest
 #------------------------------------------------------------------------------
 ENV  PROJECT='SysAdmin Shell (CentOS)' \
     AUTHOR='awmyhr' \
-    VERSION='1.1.0' \
+    VERSION='1.1.1' \
     REVISED='2018-08-08' \
     CREATED='2018-07-30' \
     COPYRIGHT='2018 awmyhr' \
@@ -55,7 +55,7 @@ LABEL org.label-schema.name="${PROJECT}" \
       org.label-schema.url="https://github.com/awmyhr/docker-sash" \
       org.label-schema.vcs-type="git" \
       org.label-schema.vcs-url="https://github.com/awmyhr/docker-sash" \
-      org.label-schema.summary="TODO: CHANGEME <100 char" \
-      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.summary="Toolbox for SysAdmins built on CentOS" \
+      org.label-schema.description="Has a variety of script langages, shells, utilities, and text editors useful to SysAdmin types." \
       org.label-schema.schema-version='1.0.0-rc.1'
 #------------------------------------------------------------------------------

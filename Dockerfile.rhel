@@ -5,7 +5,7 @@ FROM rhel:7.4
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (RHEL)' \
     AUTHOR='awmyhr' \
-    VERSION='1.0.0' \
+    VERSION='1.0.1' \
     REVISED='2018-08-08' \
     CREATED='2018-07-24' \
     COPYRIGHT='2018 awmyhr' \
@@ -53,6 +53,6 @@ LABEL org.label-schema.name="${PROJECT}" \
       org.label-schema.vcs-type="git" \
       org.label-schema.vcs-url="https://github.com/awmyhr/docker-sash" \
       org.label-schema.summary="Toolbox for SysAdmins built on RHEL" \
-      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.description="Has a variety of script langages, shells, utilities, and text editors useful to SysAdmin types." \
       org.label-schema.schema-version='1.0.0-rc.1'
 #------------------------------------------------------------------------------
