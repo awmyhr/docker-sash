@@ -6,6 +6,7 @@
 
 - [Install](#install)
 - [Usage](#usage)
+- [Flavors](#flavors)
 - [Maintainers](#maintainers)
 - [Contribute](#contribute)
 - [License](#license)
@@ -38,6 +39,52 @@ Executing 'container-build.sh' will make the above container persistent. In
 this case it will be siting idle. Running 'container-run.sh' will open a
 session inside the container. Again, examine the scripts for an idea of
 what Docker commands to use for a more customized experience.
+
+## Flavors
+
+### CentOS 7
+
+This is intended as a stable/LTS container. The image is sourced from the
+official image on Docker Hub. Packages are sourced first from the official
+CentOS repositories (base, updates, and extras), then from EPEL.
+
+Other sources (i.e., Python pip install, other 3rd party repos) are used
+very judiciously, and only when the utility outweighs the desire to keep
+the system 'pure.'
+
+A variety of script languages, shells, utilities, and text editors are
+available (though noteably not Emacs, as it is very heavy. However, mg is.)
+
+### RHEL 7
+
+*NOTE: This container has special, specific requirements!*
+
+*NOTE: This container is NOT supported or endorsed by Red Hat in any way!*
+
+A Red Hat Enterprise Linux 7 version of the CentOS 7 container. The image is
+sourced from the official Red Hat registry, and has a very strict set of
+requirements:
+
+* The host system *must* be RHEL 7 with valid subscriptions/entitlements.
+
+* The host system *must* be using Docker from the RHEL 7 Server Extras repo.
+
+* The host system *must* be able to present the following repositories:
+  
+  * RHEL 7 Server (typically named rhel-7-server-rpms)
+
+  * RHEL 7 Server Ansible (typically named rhel-7-server-ansible-2-rpms)
+
+  * EPEL 7 Server (must have 'epel' in name string)
+
+If the EPEL repos are not available, the user will need to remove the related
+lines from Dockerfile.rhel. Alternatively, one could add the EPEL repo file,
+however the idea of this flavor is content is controlled by a Satellite Server's
+Content Views and Lifecycles.
+
+As with CentOS, other sources (i.e., Python pip install) are used very
+judiciously, and only when the utility outweighs the desire to keep the
+system managed and 'pure.'
 
 ## Maintainers
 

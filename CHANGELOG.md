@@ -22,8 +22,10 @@ however individual files generally use date versioning.
 ## [Unreleased]
 ### Added
 - dockerignore file
+- flavor-specific documentation added to README.md
 
 ### Changed
+- package updates for centos and rhel
 
 ### Deprecated
 
