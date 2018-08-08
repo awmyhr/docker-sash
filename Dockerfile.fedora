@@ -5,7 +5,7 @@ FROM fedora:latest
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (Fedora)' \
     AUTHOR='awmyhr' \
-    VERSION='1.0.0' \
+    VERSION='1.0.1' \
     REVISED='2018-08-08' \
     CREATED='2018-08-08' \
     COPYRIGHT='2018 awmyhr' \
@@ -29,8 +29,8 @@ RUN chmod 0755 /usr/local/bin/login.sh \
             tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
             nano hexedit ansible ansible-doc ansible-lint python-pyvmomi \
             ansible-inventory-grapher ansible-review python-pip rc \
-            ack fish autojump-fish autojump-zsh xonsh xs xyzsh yash \
-            ccze multitail lnav vile mg joe tweak
+            ack exa fish autojump-fish autojump-zsh xonsh xs xyzsh yash \
+            ccze multitail lnav vile mg joe tweak \
     && wget https://packages.microsoft.com/config/rhel/7/prod.repo -O /etc/yum.repos.d/microsoft.repo \
     && dnf -y install powershell \
     && dnf clean all \
