@@ -5,7 +5,7 @@ FROM fedora:latest
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (Fedora)' \
     AUTHOR='awmyhr' \
-    VERSION='1.1.0' \
+    VERSION='1.2.0' \
     REVISED='2018-08-09' \
     CREATED='2018-08-08' \
     COPYRIGHT='2018 awmyhr' \
@@ -27,7 +27,7 @@ RUN chmod 0755 /usr/local/bin/login.sh \
             python-urllib3 python-virtualenv PyYAML qperf rsync ruby screen \
             snappy strace sudo sysfsutils sysstat tcsh time tmux traceroute \
             tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
-            nano hexedit ansible ansible-lint python-pyvmomi \
+            nano hexedit ansible ansible-lint python-pyvmomi file \
             ansible-inventory-grapher ansible-review python-pip rc \
             ack exa fish autojump-fish autojump-zsh xonsh xs xyzsh yash \
             ccze multitail lnav vile mg joe tweak \

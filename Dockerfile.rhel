@@ -5,7 +5,7 @@ FROM rhel:7.4
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (RHEL)' \
     AUTHOR='awmyhr' \
-    VERSION='1.1.0' \
+    VERSION='1.2.0' \
     REVISED='2018-08-09' \
     CREATED='2018-07-24' \
     COPYRIGHT='2018 awmyhr' \
@@ -29,7 +29,7 @@ RUN chmod 0755 /usr/local/bin/login.sh \
             python-urllib3 python-virtualenv PyYAML qperf rsync ruby screen \
             snappy strace sudo sysfsutils sysstat tcsh time tmux traceroute \
             tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
-            nano hexedit \
+            nano hexedit file \
     && yum-config-manager -q --enable rhel-7-server-ansible-2-rpms >/dev/null \
     && yum install -y -t ansible \
     && yum-config-manager -q --enable *epel* >/dev/null \
