@@ -21,6 +21,21 @@ however individual files generally use date versioning.
 
 ## [Unreleased]
 ### Added
+
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+---
+
+## [1.1.0] - 2018-08-09 (awmyhr)
+### Added
 - dockerignore file
 - flavor-specific documentation added to README.md
 - Microsoft repo and PowerShell install for centos
