@@ -33,6 +33,7 @@ however individual files generally use date versioning.
 ### Deprecated
 
 ### Removed
+- containers will not install ansible-docs
 
 ### Fixed
 - spelling and wording tweaks

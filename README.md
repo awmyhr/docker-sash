@@ -57,12 +57,16 @@ Other sources (i.e., Python pip install, other 3rd party repos) are used
 very judiciously, and only when the utility outweighs the desire to keep
 the system 'pure.'
 
+Image size is just over 800MB.
+
 ### Fedora
 
 This is intended as a current version container. The image is sourced from the
 official image on Docker Hub. Packages are sourced first from the official
 Fedora repositories (base and updates), then from 3rd party repos,
 falling back to other package managers (such as pip) when needed.
+
+Image size is about 1.25GB.
 
 ### RHEL 7
 
@@ -94,6 +98,8 @@ Content Views and Lifecycles.
 As with CentOS, other sources (i.e., Python pip install) are used very
 judiciously, and only when the utility outweighs the desire to keep the
 system managed and 'pure.'
+
+Image size is just over 800MB.
 
 ## Maintainers
 
