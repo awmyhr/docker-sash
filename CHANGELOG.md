@@ -13,7 +13,7 @@ however individual files generally use date versioning.
 ## TODO
 - wrapper script which provides configurability, does all the building/running,
   and can be used as a login shell
-- more flavors (Fedora, Ubuntu, etc)
+- more flavors (Alpine, Ubuntu, etc)
 - installation/updating support
 - improved documentation
 
@@ -29,6 +29,29 @@ however individual files generally use date versioning.
 ### Removed
 
 ### Fixed
+
+### Security
+
+---
+
+## [1.1.0] - 2018-08-09 (awmyhr)
+### Added
+- dockerignore file
+- flavor-specific documentation added to README.md
+- Microsoft repo and PowerShell install for centos
+- flavor: Fedora
+
+### Changed
+- package updates for centos and rhel
+- container hostname now is prefixed with the host's hostname
+
+### Deprecated
+
+### Removed
+- containers will not install ansible-docs
+
+### Fixed
+- spelling and wording tweaks
 
 ### Security
 

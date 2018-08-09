@@ -5,8 +5,8 @@ FROM rhel:7.4
 #------------------------------------------------------------------------------
 ENV PROJECT='SysAdmin Shell (RHEL)' \
     AUTHOR='awmyhr' \
-    VERSION='0.7.0-alpha' \
-    REVISED='2018-08-02' \
+    VERSION='1.2.0' \
+    REVISED='2018-08-09' \
     CREATED='2018-07-24' \
     COPYRIGHT='2018 awmyhr' \
     LICENSE='Apache-2.0' \
@@ -29,12 +29,13 @@ RUN chmod 0755 /usr/local/bin/login.sh \
             python-urllib3 python-virtualenv PyYAML qperf rsync ruby screen \
             snappy strace sudo sysfsutils sysstat tcsh time tmux traceroute \
             tree unzip vim-enhanced wget words xz yum-utils zip zsh  \
+            nano hexedit file \
     && yum-config-manager -q --enable rhel-7-server-ansible-2-rpms >/dev/null \
-    && yum install -y -t ansible ansible-doc \
+    && yum install -y -t ansible \
     && yum-config-manager -q --enable *epel* >/dev/null \
     && yum install -y -t ansible-lint ansible-inventory-grapher ansible-review \
-            ack bash-completion-extras fish autojump-fish autojump-zsh \
-            python-pyvmomi python-pip \
+            ack bash-completion-extras fish autojump-fish autojump-zsh rc \
+            python-pyvmomi python-pip ccze multitail lnav vile mg joe tweak \
     && yum clean all \
     && rm -rf /var/cache/yum \
     && pip install Jinja2 --upgrade \
@@ -52,6 +53,6 @@ LABEL org.label-schema.name="${PROJECT}" \
       org.label-schema.vcs-type="git" \
       org.label-schema.vcs-url="https://github.com/awmyhr/docker-sash" \
       org.label-schema.summary="Toolbox for SysAdmins built on RHEL" \
-      org.label-schema.description="TODO: CHANGEME <300 char" \
+      org.label-schema.description="Has a variety of script langages, shells, utilities, and text editors useful to SysAdmin types." \
       org.label-schema.schema-version='1.0.0-rc.1'
 #------------------------------------------------------------------------------
